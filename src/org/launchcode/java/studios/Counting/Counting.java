@@ -19,7 +19,7 @@ public class Counting {
 //        String text = scanner.nextLine();
 //        scanner.close();
 
-        Path input = Path.of("/Users/tudorseserman/Desktop/readmeeee.rtf");
+        Path input = Path.of("src/org/launchcode/java/studios/Counting/stuff.txt");
         String text = Files.readString(input);
 
         HashMap<Character, Integer> letters = new HashMap<>();
