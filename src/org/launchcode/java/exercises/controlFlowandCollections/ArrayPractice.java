@@ -1,7 +1,6 @@
-package org.launchcode.java.controlFlowandCollections;
+package org.launchcode.java.exercises.controlFlowandCollections;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 

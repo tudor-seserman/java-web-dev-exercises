@@ -1,4 +1,4 @@
-package org.launchcode.java.controlFlowandCollections;
+package org.launchcode.java.exercises.controlFlowandCollections;
 
 import java.util.HashMap;
 import java.util.Map;
