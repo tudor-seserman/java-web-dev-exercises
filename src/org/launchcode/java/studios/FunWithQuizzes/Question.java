@@ -1,12 +1,14 @@
 package org.launchcode.java.studios.FunWithQuizzes;
 
+import java.util.HashMap;
 import java.util.List;
 
-public class Question<String> {
+public abstract class Question<T>{
     String question;
-    List<String> answer;
+    HashMap<Integer, String> options;
+    List<T> answer;
 
-    public Question(String question, List<String> answer) {
+    public Question(String question, List<T> answer) {
         this.question = question;
         this.answer = answer;
     }
@@ -15,10 +17,4 @@ public class Question<String> {
         return question;
     }
 
-    public boolean checkAnswer(String answerGiven){
-        if(this.answer.contains(answerGiven)){
-            return true;
-        }
-        return false;
-    }
 }

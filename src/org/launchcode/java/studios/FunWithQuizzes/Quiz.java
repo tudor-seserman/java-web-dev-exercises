@@ -1,11 +1,9 @@
 package org.launchcode.java.studios.FunWithQuizzes;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.regex.Pattern;
 
-public class Quiz {
+public class Quiz <T>{
 
     ArrayList<Question> quizQuestions;
     Scanner answerGiven;
@@ -25,13 +23,29 @@ public class Quiz {
 
     public void runQuiz(){
         System.out.println("Welcome to my quiz!");
-        Scanner answerGiven = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int score=0;
             for(Question question:quizQuestions){
                 System.out.println(question.getQuestion());
-                if(question.checkAnswer(answerGiven.next())) score++;
+                boolean validation = true;
+                if(question instanceof TOrF) {
+                    while(validation) {
+                        try {
+                            if (((TOrF) question).checkAnswer(scanner.nextBoolean())) score++;
+                            validation = false;
+                        }catch (InputMismatchException e){
+                            System.out.println("Please enter true or false");
+                            scanner.next();
+                        }
+                    }
+                } else if (question instanceof MultipleChoice) {
+                    if(((MultipleChoice) question).checkAnswer(scanner.next())) score++;
+                }else{
+                    if(((Checkbox) question).checkAnswer(scanner.next()) )score++;
+                }
+
             }
-            answerGiven.close();
+            scanner.close();
         System.out.println("Your score is "+score);
     }
 }

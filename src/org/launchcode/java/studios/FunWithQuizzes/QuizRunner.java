@@ -4,11 +4,11 @@ import java.util.*;
 
 public class QuizRunner {
     public static void main(String[] args) {
-        Question first= new Question(
+        Question first= new TOrF(
                 "Is this the first question?\nTrue or False",
-                new ArrayList<>(Collections.singleton("True"))
+                new ArrayList<>(Collections.singleton(true))
         );
-        Question second = new Question(
+        Question second = new MultipleChoice(
                 "Is this the second question?\n" +
                         "a) Yes\n" +
                         "b) No\n" +
@@ -16,7 +16,7 @@ public class QuizRunner {
                         "d) This is the third",
                 new ArrayList<>(Collections.singleton("a"))
         );
-        Question third = new Question(
+        Question third = new Checkbox(
                 "Is this the last question?\n" +
                         "a) Yes\n" +
                         "b) No\n" +
