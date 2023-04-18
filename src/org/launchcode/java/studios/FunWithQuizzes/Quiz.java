@@ -26,7 +26,7 @@ public class Quiz <T>{
         Scanner scanner = new Scanner(System.in);
         int score=0;
             for(Question question:quizQuestions){
-                System.out.println(question.getQuestion());
+                question.printQuestion();
                 boolean validation = true;
                 if(question instanceof TOrF) {
                     while(validation) {
@@ -39,7 +39,15 @@ public class Quiz <T>{
                         }
                     }
                 } else if (question instanceof MultipleChoice) {
-                    if(((MultipleChoice) question).checkAnswer(scanner.next())) score++;
+                    while(validation) {
+                        try {
+                            if(((MultipleChoice) question).checkAnswer(scanner.next())) score++;
+                            validation = false;
+                        }catch (InputMismatchException e){
+                            System.out.println("Please type in the correct answer");
+                            scanner.next();
+                        }
+                    }
                 }else{
                     if(((Checkbox) question).checkAnswer(scanner.next()) )score++;
                 }

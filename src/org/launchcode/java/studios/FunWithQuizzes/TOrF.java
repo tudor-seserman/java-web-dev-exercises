@@ -3,10 +3,9 @@ package org.launchcode.java.studios.FunWithQuizzes;
 import java.util.List;
 
 public class TOrF extends Question implements Answer{
-    public TOrF(String question, List<Boolean> answer) {
-        super(question, answer);
+    public TOrF(String question, List answers, List correctAnswer) {
+        super(question, answers, correctAnswer);
     }
-
 
     @Override
     public boolean checkAnswer(Object answerGiven) {

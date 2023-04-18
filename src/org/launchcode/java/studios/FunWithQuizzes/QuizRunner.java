@@ -5,27 +5,23 @@ import java.util.*;
 public class QuizRunner {
     public static void main(String[] args) {
         Question first= new TOrF(
-                "Is this the first question?\nTrue or False",
+                "Is this the first question?",
+                new ArrayList<>(Arrays.asList("True","False")),
                 new ArrayList<>(Collections.singleton(true))
         );
-        Question second = new MultipleChoice(
-                "Is this the second question?\n" +
-                        "a) Yes\n" +
-                        "b) No\n" +
-                        "c) This is the last question\n" +
-                        "d) This is the third",
-                new ArrayList<>(Collections.singleton("a"))
-        );
-        Question third = new Checkbox(
-                "Is this the last question?\n" +
-                        "a) Yes\n" +
-                        "b) No\n" +
-                        "c) This is the last question\n" +
-                        "d) This is the third",
-                new ArrayList<>(Arrays.asList("a", "c", "d"))
-        );
 
-        Quiz test=new Quiz(new ArrayList<>(Arrays.asList(first, second, third)));
+        Question second = new MultipleChoice(
+                "Is this the second question?",
+                new ArrayList<>(Arrays.asList( "Yes", "No", "This is the last question", "This is the third")),
+                new ArrayList<>(Collections.singleton("yes"))
+                );
+
+//        Question third = new Checkbox(
+//                "Is this the last question?",
+//                new ArrayList<>(Arrays.asList("Yes", "No", "This is the last question", "This is the third"),
+//                new ArrayList<>(Arrays.asList("a", "c", "d")));
+
+        Quiz test=new Quiz(new ArrayList<>(Arrays.asList(first, second)));
         test.runQuiz();
 
     }
