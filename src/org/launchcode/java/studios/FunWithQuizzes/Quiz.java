@@ -28,30 +28,45 @@ public class Quiz <T>{
             for(Question question:quizQuestions){
                 question.printQuestion();
                 boolean validation = true;
-                if(question instanceof TOrF) {
-                    while(validation) {
+                while(validation) {
+                    if (question instanceof TOrF) {
                         try {
                             if (((TOrF) question).checkAnswer(scanner.nextBoolean())) score++;
                             validation = false;
-                        }catch (InputMismatchException e){
+                        } catch (InputMismatchException e) {
                             System.out.println("Please enter true or false");
                             scanner.next();
                         }
-                    }
-                } else if (question instanceof MultipleChoice) {
-                    while(validation) {
+                    } else if (question instanceof MultipleChoice) {
                         try {
-                            if(((MultipleChoice) question).checkAnswer(scanner.next())) score++;
+                            if (((MultipleChoice) question).checkAnswer(scanner.nextInt())) score++;
                             validation = false;
-                        }catch (InputMismatchException e){
-                            System.out.println("Please type in the correct answer");
+                        } catch (InputMismatchException e) {
+                            System.out.println("Please type in the number of the correct answer");
+                            scanner.next();
+                        }
+                    } else {
+                        System.out.println("Enter 'x' to finish");
+                        try {
+                            List<Integer> answersToEvaluate= new ArrayList<>();
+                            for(int i=0; i < question.size() ; i++) {
+                                if(scanner.hasNextInt()){
+                                    answersToEvaluate.add(scanner.nextInt());
+                                }else if(scanner.next().equals("x")){
+                                    i=question.size();
+                                }else{
+                                    throw new InputMismatchException();
+                                }
+                            }
+
+                            if (((Checkbox) question).checkAnswer(answersToEvaluate)) score++;;
+                            validation = false;
+                        } catch (InputMismatchException e) {
+                            System.out.println("Please type in the number of the correct answer or 'x' to finish");
                             scanner.next();
                         }
                     }
-                }else{
-                    if(((Checkbox) question).checkAnswer(scanner.next()) )score++;
                 }
-
             }
             scanner.close();
         System.out.println("Your score is "+score);
