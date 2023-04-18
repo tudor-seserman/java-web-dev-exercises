@@ -9,6 +9,5 @@ public class Checkbox extends Question implements Answer{
 
     @Override
     public boolean checkAnswer(Object answerGiven) {
-        return false;
-    }
+        return answer.contains((String)answerGiven);    }
 }

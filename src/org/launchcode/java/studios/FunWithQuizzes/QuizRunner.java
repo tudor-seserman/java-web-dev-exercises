@@ -22,15 +22,9 @@ public class QuizRunner {
                         "b) No\n" +
                         "c) This is the last question\n" +
                         "d) This is the third",
-                new ArrayList<>(Arrays.asList("a", "b", "c"))
+                new ArrayList<>(Arrays.asList("a", "c", "d"))
         );
 
-
-//        ArrayList<Question> stuff = new ArrayList<>();
-//        stuff.add(first);
-//        stuff.add(second);
-//        stuff.add(third);
-//        Quiz test=new Quiz(stuff);
         Quiz test=new Quiz(new ArrayList<>(Arrays.asList(first, second, third)));
         test.runQuiz();
 
